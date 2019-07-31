@@ -1,0 +1,29 @@
+mocha.setup('bdd');
+var expect = chai.expect;
+
+function sum(numbers) {
+  // Giả thiết: numbers là một array các số nguyên
+  // Yêu cầu: 
+  //	- trả về tổng các số, dùng vòng lặp for ... of
+  //  - nếu array trống trả về 0
+  if(numbers.length === 0) return 0;
+  var sum = 0;
+  for(var element of numbers)
+  {
+  sum += element;
+  }
+  return sum;
+}
+
+describe('sum', function () {
+	it('should return 0 if array is empty', function () {
+    expect(sum([])).to.equal(0);
+  });
+  
+  it('should return the sum if array is not empty', function() {
+  	expect(sum([1])).to.equal(1);
+    expect(sum([1, 2, 3])).to.equal(6);
+  });
+});
+
+mocha.run();
